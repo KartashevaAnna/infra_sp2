@@ -53,7 +53,9 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer = UserSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save(data=request.data)
-            return JsonResponse(serializer.data, status=status.HTTP_204_NO_CONTENT)
+            return JsonResponse(
+                serializer.data, status=status.HTTP_204_NO_CONTENT
+            )
 
     @action(
         detail=False,
@@ -103,7 +105,9 @@ def signup(request):
 def get_token(request):
     serializer = TokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
-    user = get_object_or_404(User, username=serializer.validated_data.get("username"))
+    user = get_object_or_404(
+        User, username=serializer.validated_data.get("username")
+    )
     token = Token.objects.get_or_create(user=user)
     if default_token_generator.check_token(
         user, str(serializer.validated_data.get("confirmation_code"))

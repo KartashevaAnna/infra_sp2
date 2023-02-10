@@ -31,7 +31,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         email = email.lower()
         if User.objects.filter(email=email, username=username).exists():
             raise serializers.ValidationError(
-                f"User with username {username} and email {email} already " f"exists."
+                f"User with username {username} and email {email} already "
+                f"exists."
             )
         return username, email
 
@@ -39,14 +40,18 @@ class RegistrationSerializer(serializers.ModelSerializer):
 class TokenSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     confirmation_code = serializers.CharField(required=True)
-    role = serializers.ChoiceField(choices=ROLE_CHOICES, default=USER, initial=USER)
+    role = serializers.ChoiceField(
+        choices=ROLE_CHOICES, default=USER, initial=USER
+    )
 
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
-    role = serializers.ChoiceField(choices=ROLE_CHOICES, default=USER, initial=USER)
+    role = serializers.ChoiceField(
+        choices=ROLE_CHOICES, default=USER, initial=USER
+    )
 
     class Meta:
         model = User

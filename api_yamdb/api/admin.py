@@ -48,17 +48,23 @@ class ReviewAdmin(admin.ModelAdmin):
         "pub_date",
     ]
     list_filter = [
-        field.name for field in Review._meta.get_fields() if not field.many_to_many
+        field.name
+        for field in Review._meta.get_fields()
+        if not field.many_to_many
     ]
     empty_value_display = "-empty-"
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = [
-        field.name for field in Comment._meta.get_fields() if not field.many_to_many
+        field.name
+        for field in Comment._meta.get_fields()
+        if not field.many_to_many
     ]
     list_filter = [
-        field.name for field in Comment._meta.get_fields() if not field.many_to_many
+        field.name
+        for field in Comment._meta.get_fields()
+        if not field.many_to_many
     ]
     empty_value_display = "-empty-"
 

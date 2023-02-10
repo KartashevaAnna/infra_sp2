@@ -65,7 +65,9 @@ class GenreViewSet(MyBasicViewset):
 
 class TitleViewSet(viewsets.ModelViewSet):
     queryset = (
-        Title.objects.annotate(rating=Avg("reviews__score")).all().order_by("name")
+        Title.objects.annotate(rating=Avg("reviews__score"))
+        .all()
+        .order_by("name")
     )
     serializer_class = TitleCreateSerializer
     pagination = PageNumberPagination

@@ -7,7 +7,9 @@ class TestReadme:
     def test_readme(self):
         try:
             with open(
-                f'{os.path.join(root_dir, "README.md")}', "r", encoding="utf-8"
+                f'{os.path.join(root_dir, "README.md")}',
+                "r",
+                encoding="utf-8",
             ) as f:
                 readme = f.read()
         except FileNotFoundError:

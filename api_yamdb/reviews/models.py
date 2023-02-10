@@ -6,7 +6,9 @@ from users.models import User
 
 class Category(models.Model):
     name = models.CharField(
-        max_length=256, verbose_name="Категория", help_text="Укажите категорию"
+        max_length=256,
+        verbose_name="Категория",
+        help_text="Укажите категорию",
     )
     slug = models.SlugField(
         max_length=50,

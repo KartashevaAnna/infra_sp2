@@ -109,7 +109,9 @@ class Migration(migrations.Migration):
                     "year",
                     models.IntegerField(
                         help_text="Укажите год выпуска произведения",
-                        validators=[django.core.validators.MaxValueValidator(2022)],
+                        validators=[
+                            django.core.validators.MaxValueValidator(2022)
+                        ],
                         verbose_name="Год выпуска",
                     ),
                 ),
@@ -175,7 +177,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "pub_date",
-                    models.DateTimeField(auto_now_add=True, verbose_name="Дата отзыва"),
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата отзыва"
+                    ),
                 ),
                 (
                     "author",

@@ -71,7 +71,9 @@ class Migration(migrations.Migration):
                 ("email", models.EmailField(max_length=254, unique=True)),
                 (
                     "first_name",
-                    models.CharField(blank=True, max_length=150, verbose_name="имя"),
+                    models.CharField(
+                        blank=True, max_length=150, verbose_name="имя"
+                    ),
                 ),
                 (
                     "last_name",
