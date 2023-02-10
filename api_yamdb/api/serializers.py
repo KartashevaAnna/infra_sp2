@@ -35,9 +35,7 @@ class TitleCreateSerializer(serializers.ModelSerializer):
 
     def validate_year(self, value):
         if value > datetime.datetime.now().year:
-            raise ValidationError(
-                "Неверный год выпуска. Измените дату выхода."
-            )
+            raise ValidationError("Неверный год выпуска. Измените дату выхода.")
         return value
 
 
