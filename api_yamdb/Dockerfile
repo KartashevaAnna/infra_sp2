@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install libpq-dev -y
+    apt install -y libpq-dev
 RUN pip3 install --upgrade pip
 COPY requirements.txt .
 
